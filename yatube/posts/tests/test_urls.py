@@ -61,7 +61,7 @@ class PostURLTests(TestCase):
     def test_some_strange_url_not_found(self):
         """Страница /non-existent_page/ взвращает ошибку 404."""
         response = self.guest_client.get('/posts/non-existent_page/')
-        self.assertEqual(response.status_code, HTTPStatus.OK)
+        self.assertEqual(response.status_code, HTTPStatus.NOT_FOUND)
 
     def test_posts_post_id_edit_url_at_desired_location(self):
         """Страница /profile/post_id/edit/ доступна автору поста."""
