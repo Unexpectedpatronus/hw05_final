@@ -23,5 +23,5 @@ def csrf_failure(request, reason=''):
 
 def server_error(request):
     template = 'core/500.html'
-    status = HTTPStatus.NO_CONTENT
+    status = HTTPStatus.INTERNAL_SERVER_ERROR
     return render(request, template, status=status)

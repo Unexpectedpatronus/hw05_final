@@ -88,6 +88,16 @@ class PostURLTests(TestCase):
         response = self.guest_client.get('/posts/1/edit/')
         self.assertEqual(response.status_code, HTTPStatus.FOUND)
 
+    def test_follow_url_inaccessible_for_guest_client(self):
+        """Гость не имеет доступа к странице follow."""
+        response = self.guest_client.get('/follow/')
+        self.assertEqual(response.status_code, HTTPStatus.FOUND)
+
+    def test_follow_url_exists_at_desired_location(self):
+        """Авторизованный пользователь имеет доступ к странице follow."""
+        response = self.authorized_client.get('/follow/')
+        self.assertEqual(response.status_code, HTTPStatus.OK)
+
     def test_urls_uses_correct_templates(self):
         """URL-адрес использует соответствующий шаблон."""
         templates_url_names = {
@@ -98,6 +108,7 @@ class PostURLTests(TestCase):
             '/create/': 'posts/create_post.html',
             '/posts/1/edit/': 'posts/create_post.html',
             '/posts/non-existent_page/': 'core/404.html',
+            '/follow/': 'posts/follow.html',
         }
         for address, template in templates_url_names.items():
             with self.subTest(address=address):

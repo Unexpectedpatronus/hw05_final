@@ -7,12 +7,12 @@
   {% include 'includes/switcher.html' %}
 
 
-    <h1>Посты авторов, на которых вы подписаны</h1>
+  <h1>Посты авторов, на которых вы подписаны</h1>
 
-    {% for post in page_obj %}
-      {% include 'includes/post.html' with show_group_link=True show_author_link=True %}
-    {% endfor %}
+  {% for post in page_obj %}
+    {% include 'includes/post.html' with show_group_link=True show_author_link=True %}
+  {% endfor %}
 
-    {% include 'includes/paginator.html' %}
+  {% include 'includes/paginator.html' %}
 
 {% endblock %}

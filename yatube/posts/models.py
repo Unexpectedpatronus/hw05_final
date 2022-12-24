@@ -98,3 +98,10 @@ class Follow(models.Model):
         verbose_name='Автор',
         on_delete=models.CASCADE,
     )
+
+    class Meta:
+        verbose_name = 'Подписка'
+        verbose_name_plural = 'Подписки'
+
+    def __str__(self):
+        return self.author
