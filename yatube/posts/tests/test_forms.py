@@ -212,7 +212,7 @@ class PostFormTests(TestCase):
             Comment.objects.filter(
                 post=self.post,
                 author=self.user,
-                text='Тестовый комментарий',
+                text=form_data['text'],
             ).exists()
         )
 
