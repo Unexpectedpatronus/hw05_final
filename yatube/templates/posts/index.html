@@ -11,7 +11,7 @@
   {% load cache %}
   {% cache 20 index_page page_obj %}
 
-    {% for post in page_obj %}
+    {% for post in page_obj.number %}
       {% include 'includes/post.html' with show_group_link=True show_author_link=True %}
     {% endfor %}
   {% endcache %}
