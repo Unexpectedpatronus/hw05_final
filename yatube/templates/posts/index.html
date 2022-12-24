@@ -9,9 +9,9 @@
 
   <h1>Последние обновления на сайте</h1>
   {% load cache %}
-  {% cache 20 index_page page_obj %}
+  {% cache 20 index_page page_obj.number %}
 
-    {% for post in page_obj.number %}
+    {% for post in page_obj %}
       {% include 'includes/post.html' with show_group_link=True show_author_link=True %}
     {% endfor %}
   {% endcache %}
