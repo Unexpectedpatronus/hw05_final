@@ -50,18 +50,17 @@ class PostPagesTests(TestCase):
 
     def test_cache_index_page(self):
         """Проверяем работу кэша главной страницы"""
-        response = self.authorized_client_not_author.get('/')
+        response = self.authorized_client_not_author.get(reverse('posts:index'))
         cached_response_content = response.content
         Post.objects.create(text='Второй пост', author=self.user)
-        response = self.authorized_client_not_author.get('/')
+        response = self.authorized_client_not_author.get(reverse('posts:index'))
         self.assertEqual(cached_response_content, response.content)
         cache.clear()
-        response = self.authorized_client_not_author.get('/')
+        response = self.authorized_client_not_author.get(reverse('posts:index'))
         self.assertNotEqual(cached_response_content, response.content)
 
     def test_pages_uses_correct_template(self):
         """URL-адрес использует соответствующий шаблон."""
-        # Собираем в словарь пары "имя_html_шаблона: reverse(name)"
         templates_pages_names = {
             reverse('posts:index'): 'posts/index.html',
             reverse('posts:group_list', kwargs=(
