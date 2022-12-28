@@ -59,7 +59,6 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
-# Добавьте IP адреса, при обращении с которых будет доступен DjDT
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
