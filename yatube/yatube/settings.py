@@ -29,6 +29,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '[::1]',
     'testserver',
+    'www.unexpectedpatronus.pythonanywhere.com',
+    'unexpectedpatronus.pythonanywhere.com'
 ]
 
 # Application definition
